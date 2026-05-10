@@ -26,3 +26,18 @@ export async function getRun(id) {
     throw error;
   }
 }
+
+export async function getCompare(runAId, runBId) {
+  try {
+    const response = await api.get('/compare', {
+      params: { run_a: runAId, run_b: runBId },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(
+      `Failed to compare runs ${runAId} vs ${runBId}:`,
+      error,
+    );
+    throw error;
+  }
+}
